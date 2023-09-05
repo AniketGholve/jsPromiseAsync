@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        Q1 Write one example explaining how you can write a callback function.
+
+        function sum(a,b){
+            return a+b;
+        }
+        function calculator(callback){
+            let a=10;
+            let b=20;
+            console.log(callback(a,b));
+        }
+        calculator(sum);
+
+        Q2 "Write a callback function to print numbers from 1 to 7, in which 1 should be printed after 1 sec, 2 should be printed after 2 sec, 3 should be printed after 3 sec, and so on. 
+
+        Explain callback hell.
+        Numbers
+        1
+        2
+        3
+        4
+        5
+        6
+        7"
+
+        for (let i = 1; i <= 7; i++) {
+            (function (index) {
+              setTimeout(function () {
+                console.log(index);
+              }, i * 1000);
+            })(i);
+          }
+
+        Q4 "Create a promise function accepting an argument, if yes is passed to the function then it should go to resolved state and print Promise Resolved, and if nothing is passed 
+        then it should go to reject the state and catch the error and print Promise Rejected "
+
+        function promiseFunction(val){
+            return new Promise((res,rej)=>{
+                 if(val!=null){
+                     res("Promise Resolved");
+                 }
+                 else{
+                     rej("Promise Rejected")
+                 }
+             })
+         }
+         
+         promiseFunction("Aniket").then((res)=>console.log(res),(err)=>{console.log(err)})
+
+         Q5 Create examples to explain callback function
+
+         function sum(a,b){
+            return a+b;
+        }
+        function calculator(callback){
+            let a=10;
+            let b=20;
+            console.log(callback(a,b));
+        }
+        calculator(sum);
+
+        Q6 Create examples to explain callback hell function
+
+        getData(){
+            getName(){
+                getFirstName(){
+                    getLastName(){
+                        and so on .....
+                    }
+                }
+            }
+        }
+        this create Pyramid like Structure and known as callback hell because it contains lots of callback functions
+
+        Q7 Create examples to explain promises function
+
+        function promiseFunction(val){
+            return new Promise((res,rej)=>{
+                 if(val!=null){
+                     res("Promise Resolved");
+                 }
+                 else{
+                     rej("Promise Rejected")
+                 }
+             })
+         }
+         
+         promiseFunction("Aniket").then((res)=>console.log(res),(err)=>{console.log(err)}) // Promise Resolved
+         promiseFunction(null).then((res)=>console.log(res),(err)=>{console.log(err)}) // Promise Rejected
+
+        the function will return the promise if value passed is null then it will reject the promise and if value is not null the it will accept the promise
+
+        Q8 Create examples to explain async await function
+
+        function promiseFunction(){
+            return new Promise((res)=>{
+                setTimeout(()=>{
+                    res("Resolved Data");
+                },2000)
+            })
+        }
+        async function demo(){
+            console.log("Calling");
+            let data=await promiseFunction();
+            console.log("Called");
+            console.log(data);
+            
+        }
+        demo();
+
+        Q9 Create examples to explain promise.all function
+
+        async function promiseFunction1(){
+            return new Promise((res)=>{
+                setTimeout(()=>{
+                    res("Resolved Data1");
+                },2000)
+            })
+        }
+        async function promiseFunction2(){
+            return new Promise((res)=>{
+                setTimeout(()=>{
+                    res("Resolved Data2");
+                },3000)
+            })
+        }
+        async function promiseFunction3(){
+            return new Promise((res)=>{
+                setTimeout(()=>{
+                    res("Resolved Data3");
+                },4000)
+            })
+        }
+
+        console.log("Start")
+        let [data1,data2,data3]=await Promise.all([
+            promiseFunction1(),
+            promiseFunction2(),
+            promiseFunction3()
+        ]);
+        console.log(data1,data2,data3);
+        console.log("End")
+        output //
+        Start
+        Resolved Data1 Resolved Data2 Resolved Data3
+        End
+        
+        Promise all will wait for all the data to process and send all the data at a time
+    </pre>
+</body>
+</html>
